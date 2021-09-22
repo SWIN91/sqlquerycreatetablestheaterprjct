@@ -1,0 +1,6 @@
+My reasoning was as follows:
+
+There's always only ever one customer, but in order to see a movie, that customer will always need a minimum of one ticket. The customer can purchase as many tickets
+as desired.
+The customer may or may not choose to indulge in concessions. If the customer does choose to do so, concessions can be as many as the customer wants.
+The customer is also free to choose to see/purchase tickets for only one movie or as many movies as desired. 

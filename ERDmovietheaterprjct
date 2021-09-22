@@ -1,0 +1,116 @@
+CREATE TABLE Customer(
+	Customer_ID SERIAL PRIMARY KEY,
+	First_Name VARCHAR(100),
+	Last_Name VARCHAR(100),
+	Phone VARCHAR(15),
+	Email VARCHAR(100)	
+);
+
+
+INSERT INTO Customer(
+	Customer_ID,
+	First_Name,
+	Last_Name,
+	Phone,
+	Email
+)VALUES(
+	1,
+	'Jenns',
+	'Kiddman',
+	'0-000-000-0001',
+	'meshvocalist@spasm.mph'
+);
+
+SELECT *
+FROM Customer;
+
+CREATE TABLE Tickets(
+	Ticket_ID SERIAL PRIMARY KEY,
+	Price NUMERIC(5,2),
+	Movie_Title VARCHAR(100),
+	Quanitity SMALLINT,
+	Purchase_Info TIMESTAMP,
+	Customer_ID INTEGER
+);
+
+ALTER TABLE Tickets
+RENAME COLUMN Quanitity TO Quantity;
+
+
+INSERT INTO Tickets(
+	Ticket_ID,
+	Price,
+	Movie_Title,
+	Quantity,
+	Purchase_Info,
+	Customer_ID
+)VALUES(
+	1,
+	11.00,
+	'Cloudy With A Chance Of Meatballs',
+	3,
+	'09/01/2021, 13:10:23',
+	1
+);
+
+SELECT *
+FROM Tickets;
+
+ALTER TABLE Tickets
+ADD FOREIGN KEY(Customer_ID) REFERENCES Customer(Customer_ID);
+
+SELECT *
+FROM Tickets;
+
+CREATE TABLE Movies(
+	Movie_ID SERIAL PRIMARY KEY,
+	Movie_Title VARCHAR(100),
+	Showing_Times VARCHAR(100),
+	Showing_Dates VARCHAR(100)
+);
+
+-- ALTER TABLE Tickets
+-- ADD FOREIGN KEY(Movie_Title) REFERENCES Movies(Movie_Title);
+
+-- Attempting to run lines 72-73 yielded this error message:
+-- ERROR:  there is no unique constraint matching given keys for referenced table "movies"
+-- SQL state: 42830
+
+INSERT INTO Movies(
+	Movie_ID,
+	Movie_Title,
+	Showing_Times,
+	Showing_Dates
+)VALUES(
+	1,
+	'Cloudy With A Chance Of Meatballs',
+	'13:30:00',
+	'09/01/2021'
+);
+
+SELECT *
+FROM Movies;
+
+CREATE TABLE Concessions(
+	Concession_ID SERIAL PRIMARY KEY,
+	Product_Type VARCHAR(100),
+	Quantity NUMERIC(5,2),
+	Price NUMERIC(5,2)
+);
+
+INSERT INTO Concessions(
+	Concession_ID,
+	Product_Type,
+	Quantity,
+	Price
+)VALUES(
+	1,
+	'Popcorn',
+	1,
+	12.00
+);
+
+SELECT *
+FROM Concessions;
+
+
